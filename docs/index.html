@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="给零基础用户的 GitHub 实践入门指南">
+  <title>GitHub 零基础实践指南</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #64748b;
+      --line: #dbe3ec;
+      --paper: #f7f9fc;
+      --panel: #ffffff;
+      --navy: #172554;
+      --blue: #2563eb;
+      --cyan: #0e7490;
+      --green: #166534;
+      --amber: #9a3412;
+      --shadow: 0 18px 50px rgba(15, 23, 42, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+
+    a { color: var(--blue); }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 249, 252, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 68px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: 0;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: .92rem;
+      text-decoration: none;
+    }
+
+    nav a:hover, nav a:focus { color: var(--blue); }
+
+    .hero {
+      padding: 74px 0 48px;
+      background:
+        linear-gradient(120deg, rgba(23, 37, 84, .97), rgba(14, 116, 144, .94)),
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, .2), transparent 28%);
+      color: #fff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+      gap: 42px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #bae6fd;
+      font-size: .83rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { line-height: 1.2; letter-spacing: 0; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(2.3rem, 5vw, 4.7rem); }
+    h2 { margin: 0 0 16px; color: var(--navy); font-size: clamp(1.6rem, 3vw, 2.3rem); }
+    h3 { margin: 0 0 9px; font-size: 1.08rem; }
+
+    .hero p {
+      max-width: 680px;
+      margin: 22px 0 0;
+      color: #e0f2fe;
+      font-size: 1.08rem;
+    }
+
+    .hero-note {
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.1);
+    }
+
+    .hero-note strong { display: block; margin-bottom: 6px; color: #fff; }
+    .hero-note span { color: #dbeafe; font-size: .93rem; }
+
+    main { padding: 46px 0 82px; }
+
+    .section {
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-child { border-bottom: 0; }
+
+    .lead {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .card p { margin: 0; color: var(--muted); }
+
+    .card .label {
+      display: inline-block;
+      margin-bottom: 13px;
+      color: var(--cyan);
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .steps {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: guide-step;
+    }
+
+    .steps li {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 15px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .steps li::before {
+      counter-increment: guide-step;
+      content: counter(guide-step);
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 800;
+    }
+
+    .steps strong { display: block; margin-bottom: 3px; }
+    .steps span { color: var(--muted); }
+
+    .table-wrap {
+      margin-top: 22px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    table { width: 100%; border-collapse: collapse; min-width: 620px; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--navy); background: #eef4fb; font-size: .9rem; }
+    tr:last-child td { border-bottom: 0; }
+    td { color: var(--muted); }
+    td:first-child { color: var(--ink); font-weight: 700; }
+
+    .warning {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-left: 4px solid #ea580c;
+      background: #fff7ed;
+      color: var(--amber);
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 20px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      padding: 12px 14px 12px 38px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      position: relative;
+      color: var(--muted);
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 14px;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    code {
+      padding: 2px 5px;
+      border: 1px solid #d7e1ed;
+      background: #eef4fb;
+      color: var(--navy);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: .92em;
+    }
+
+    pre {
+      margin: 20px 0 0;
+      padding: 17px;
+      overflow: auto;
+      background: #0f172a;
+      color: #dbeafe;
+      font: .92rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+
+    footer {
+      padding: 24px 0 42px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero { padding-top: 48px; }
+      .hero-grid, .grid, .checklist { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; padding: 14px 0; }
+      nav { gap: 10px 14px; }
+    }
+
+    @media (max-width: 520px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      h1 { font-size: 2.35rem; }
+      .hero-note, .card { padding: 18px; }
+      th, td { padding: 11px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top">GitHub 零基础实践指南</a>
+      <nav aria-label="页面导航">
+        <a href="#start">快速开始</a>
+        <a href="#find">找项目</a>
+        <a href="#work">协作概念</a>
+        <a href="#publish">发布项目</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="top" class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow">Zero to open source</p>
+        <h1>把 GitHub 用成你的数字工作台</h1>
+        <p>不需要先学会编程。先学会找到项目、看懂项目、安全使用，再把自己的想法整理成可以分享的作品。</p>
+      </div>
+      <div class="hero-note">
+        <strong>今天只完成一件事</strong>
+        <span>找一个项目，读完它的 README，核对许可证和最近更新，再决定是否下载。</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="shell">
+    <section id="start" class="section">
+      <h2>30 分钟快速开始</h2>
+      <p class="lead">第一次使用时，不必背完所有术语。完成一次“发现 -> 判断 -> 使用”，你就已经迈过了最重要的一步。</p>
+      <ol class="steps">
+        <li><div><strong>注册并验证邮箱</strong><span>保留英文按钮名称，必要时打开浏览器翻译。</span></div></li>
+        <li><div><strong>搜索一个明确需求</strong><span>例如 <code>windows pdf tool</code> 或 <code>open source screen recorder</code>。</span></div></li>
+        <li><div><strong>比较三个仓库</strong><span>看 README、最近更新、Issues、Releases、许可证和系统兼容性。</span></div></li>
+        <li><div><strong>优先使用正式版本</strong><span>普通用户优先看 Releases，不要随手执行未知脚本。</span></div></li>
+        <li><div><strong>记录问题，再决定下一步</strong><span>可以收藏、提问、Fork 或 Clone，但先确认你理解了项目的使用边界。</span></div></li>
+      </ol>
+    </section>
+
+    <section id="find" class="section">
+      <h2>找到适合自己的项目</h2>
+      <p class="lead">搜索词越贴近真实需求，结果越容易筛选。AI 可以帮助你整理候选，但最后的判断必须回到原仓库。</p>
+      <div class="grid">
+        <article class="card">
+          <span class="label">明确目标</span>
+          <h3>直接搜索</h3>
+          <p>把功能、平台和使用形态组合起来，例如 Windows、桌面版、离线、PDF。</p>
+        </article>
+        <article class="card">
+          <span class="label">需要筛选</span>
+          <h3>使用组合词</h3>
+          <p>试试 <code>free</code>、<code>open source</code>、<code>awesome</code>、<code>self-hosted</code>。</p>
+        </article>
+        <article class="card">
+          <span class="label">需求模糊</span>
+          <h3>先让 AI 拆需求</h3>
+          <p>让 AI 列出兼容性、维护时间、许可证和隐私风险，而不是只问“哪个最好”。</p>
+        </article>
+      </div>
+      <div class="warning">Star 数量只是关注度信号。项目是否仍在维护、文档是否完整、许可证是否允许你的使用方式，通常更重要。</div>
+    </section>
+
+    <section class="section">
+      <h2>仓库页面的关键按钮</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>按钮</th><th>作用</th><th>适合什么时候用</th></tr></thead>
+          <tbody>
+            <tr><td>Code</td><td>查看文件、复制地址、下载 ZIP</td><td>想看源码或复制项目地址</td></tr>
+            <tr><td>Issues</td><td>记录问题、提问、提出建议</td><td>遇到可复现的问题</td></tr>
+            <tr><td>Pull requests</td><td>查看和提交修改申请</td><td>准备把改动交给维护者审核</td></tr>
+            <tr><td>Watch</td><td>订阅项目动态</td><td>长期关注项目变化</td></tr>
+            <tr><td>Star</td><td>收藏并表达支持</td><td>想把项目留在自己的清单里</td></tr>
+            <tr><td>Fork</td><td>复制到自己的 GitHub 账号</td><td>准备二次开发或提交 PR</td></tr>
+            <tr><td>Releases</td><td>查看正式发布版本</td><td>想直接安装软件</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="work" class="section">
+      <h2>用一个装修比喻理解协作</h2>
+      <p class="lead">这些词不是背诵题。把它们串成一个流程，就能理解大部分开源协作。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>概念</th><th>装修类比</th><th>实际意思</th></tr></thead>
+          <tbody>
+            <tr><td>默认分支</td><td>主施工方案</td><td>项目默认使用的主线，名字不一定是 <code>main</code></td></tr>
+            <tr><td>Commit</td><td>施工记录</td><td>保存一组有意义的修改</td></tr>
+            <tr><td>Branch</td><td>独立施工方案</td><td>隔离开发，常见前缀有 <code>fix/</code>、<code>feat/</code>、<code>docs/</code></td></tr>
+            <tr><td>Pull Request</td><td>申请验收</td><td>请求维护者审核并合并改动</td></tr>
+            <tr><td>Tag</td><td>完工留档</td><td>标记一个稳定版本，具体版本规则由项目约定</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <pre><code>Fork -> Clone -> 创建分支 -> 修改并 Commit -> Push -> Pull Request</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>四种使用方式</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="label">直接使用</span>
+          <h3>Release</h3>
+          <p>找与你系统匹配的安装包。先看发布说明，不要把陌生脚本当成安装程序。</p>
+        </article>
+        <article class="card">
+          <span class="label">临时查看</span>
+          <h3>Download ZIP</h3>
+          <p>适合快速浏览文件。它不会自动记录你和原仓库的同步关系。</p>
+        </article>
+        <article class="card">
+          <span class="label">长期修改</span>
+          <h3>Clone</h3>
+          <p>复制到本地，适合运行项目、提交 Commit 和跟随原仓库更新。</p>
+        </article>
+      </div>
+      <div class="warning">Fork 是远程复制到自己的账号，Clone 是复制到自己的电脑。两者可以连续使用，但不是一回事。</div>
+    </section>
+
+    <section id="publish" class="section">
+      <h2>发布自己的第一个项目</h2>
+      <p class="lead">一个小项目不需要一开始就完美。先把用途、安装方法、许可证和安全边界写清楚。</p>
+      <div class="grid">
+        <article class="card">
+          <span class="label">说明</span>
+          <h3>README.md</h3>
+          <p>回答“这是什么、怎么安装、怎么使用、遇到问题去哪反馈”。</p>
+        </article>
+        <article class="card">
+          <span class="label">授权</span>
+          <h3>LICENSE</h3>
+          <p>许可证决定别人可以怎样使用、修改和再发布你的项目。</p>
+        </article>
+        <article class="card">
+          <span class="label">安全</span>
+          <h3>发布前检查</h3>
+          <p>清理密码、Token、云服务凭证、数据库连接串和私人文件。</p>
+        </article>
+      </div>
+      <ul class="checklist">
+        <li>README 能让陌生人完成安装</li>
+        <li>许可证和第三方依赖已核对</li>
+        <li>已配置 .gitignore</li>
+        <li>没有敏感信息进入仓库或历史</li>
+        <li>关键功能已实际测试</li>
+        <li>Release 写清楚版本变化和已知问题</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>给新手的安全底线</h2>
+      <p class="lead">公开仓库和热门项目都不等于自动安全。对下载、脚本、权限和凭证保持基本警惕。</p>
+      <div class="grid">
+        <article class="card">
+          <h3>下载前</h3>
+          <p>确认原作者仓库、系统兼容性、Release 说明和许可证。</p>
+        </article>
+        <article class="card">
+          <h3>执行前</h3>
+          <p>看清命令会访问什么、修改什么，避免复制来源不明的高权限指令。</p>
+        </article>
+        <article class="card">
+          <h3>泄露后</h3>
+          <p>立刻撤销或轮换密钥，再清理文件和 Git 历史，不能只删当前版本。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    内容根据用户提供的视频总结整理。教程对 Star、许可证、分支、版本号和 AI 推荐等容易被绝对化的说法做了谨慎化处理。
+  </footer>
+</body>
+</html>
