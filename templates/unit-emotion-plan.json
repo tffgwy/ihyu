@@ -1,0 +1,40 @@
+{
+  "unit_id": "unit-001",
+  "reader_promise": "待填写",
+  "baseline_emotion": "待填写",
+  "emotion_sequence": [
+    {
+      "beat": "opening",
+      "emotion": "待填写",
+      "cause": "待填写",
+      "reader_question": "待填写",
+      "risk": "待填写"
+    },
+    {
+      "beat": "pressure",
+      "emotion": "待填写",
+      "cause": "待填写",
+      "reader_question": "待填写",
+      "risk": "待填写"
+    },
+    {
+      "beat": "turn",
+      "emotion": "待填写",
+      "cause": "待填写",
+      "reader_question": "待填写",
+      "risk": "待填写"
+    },
+    {
+      "beat": "payoff",
+      "emotion": "待填写",
+      "cause": "待填写",
+      "reader_question": "待填写",
+      "risk": "待填写"
+    }
+  ],
+  "turning_point": "待填写",
+  "payoff": "待填写",
+  "cost_paid": "待填写",
+  "new_state": "待填写",
+  "next_hook": "待填写"
+}

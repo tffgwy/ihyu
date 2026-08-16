@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "status": "starter",
+  "items": [
+    {
+      "id": "hook-001",
+      "introduced_in": null,
+      "surface_signal": "待填写：一个读者能记住的异常、问题或危险",
+      "current_reader_question": "待填写",
+      "character_knowledge": "待填写",
+      "reveal_boundary": "待填写",
+      "trigger_condition": "待填写",
+      "planned_payoff": "待填写",
+      "latest_safe_recovery": null,
+      "status": "unplanned",
+      "notes": "不要只堆伏笔；每个钩子都要有回收路径或明确的延迟理由。"
+    }
+  ]
+}

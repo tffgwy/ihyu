@@ -1,0 +1,41 @@
+{
+  "project": {
+    "title": "待定",
+    "genre": "待定",
+    "target_readers": "待定",
+    "reader_promise": "待填写"
+  },
+  "story_engine": {
+    "protagonist_desire": "待填写",
+    "fear_or_blind_spot": "待填写",
+    "external_conflict": "待填写",
+    "internal_conflict": "待填写",
+    "cost_of_failure": "待填写",
+    "escalation_rule": "待填写"
+  },
+  "world_rules": [
+    {
+      "id": "rule-001",
+      "rule": "待填写",
+      "visible_consequence": "待填写",
+      "exception": "待填写",
+      "cost": "待填写"
+    }
+  ],
+  "goldfinger": {
+    "early_signal": "待填写",
+    "capability": "待填写",
+    "hard_boundary": "待填写",
+    "cost": "待填写",
+    "failure_mode": "待填写",
+    "misinterpretation_risk": "待填写"
+  },
+  "cast": [],
+  "forbidden_shortcuts": [
+    "无代价升级",
+    "作者旁白替角色解释全部情绪",
+    "反派只为等待主角打脸",
+    "角色获得超出知识边界的信息"
+  ],
+  "rank_scout_status": "data_required"
+}

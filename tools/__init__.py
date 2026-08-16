@@ -1,0 +1,1 @@
+"""Deterministic Novel Forge checks."""

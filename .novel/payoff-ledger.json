@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "status": "starter",
+  "items": [
+    {
+      "id": "payoff-001",
+      "promise": "待填写：前文让读者期待什么",
+      "pressure_built_in": null,
+      "payoff_type": "待填写：打脸、反转、能力兑现、关系变化或信息揭示",
+      "planned_window": null,
+      "cost_paid": "待填写",
+      "new_problem_after_payoff": "待填写",
+      "status": "unplanned",
+      "notes": "兑现不能把故事清空；局部回报后应留下更具体的新状态。"
+    }
+  ]
+}

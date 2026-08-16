@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "project": {
+    "name": "未命名小说项目",
+    "working_title": "待定",
+    "language": "zh-CN",
+    "genre": "待定",
+    "phase": "discovery"
+  },
+  "rank_scout_status": "data_required",
+  "canon": {
+    "active_hash": null,
+    "accepted_chapter_range": null,
+    "last_snapshot": null,
+    "source_files": []
+  },
+  "chapter_range": {
+    "accepted_start": null,
+    "accepted_end": null,
+    "candidate_start": null,
+    "candidate_end": null
+  },
+  "protagonist": {
+    "name": "待填写",
+    "current_goal": "待填写",
+    "current_knowledge": [],
+    "current_realm_or_skill": "待填写",
+    "injuries": [],
+    "resources": []
+  },
+  "open_loops": [],
+  "hooks": {
+    "ledger_file": ".novel/hook-ledger.json",
+    "unresolved_count": 0
+  },
+  "payoffs": {
+    "ledger_file": ".novel/payoff-ledger.json",
+    "pending_count": 0
+  },
+  "policy": {
+    "local_models_allowed": false,
+    "ai_output_is_candidate": true,
+    "human_acceptance_required": true,
+    "guaranteed_signing_claims_allowed": false,
+    "style_imitation_allowed": false
+  },
+  "last_accepted_change": {
+    "id": null,
+    "date": null,
+    "summary": null
+  }
+}
