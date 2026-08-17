@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "run_id": "run-YYYYMMDD-001",
+  "prompt_pack": "promptpacks/generated/novel-forge-core.md",
+  "model_or_tool": "待填写",
+  "local_model_used": false,
+  "inputs": [
+    "PROJECT_CONTEXT.md",
+    ".novel/novel-state.json",
+    "templates/chapter-brief.md"
+  ],
+  "output_file": null,
+  "candidate_only": true,
+  "checks_run": [],
+  "accepted": false,
+  "rejection_reasons": [],
+  "notes": null
+}

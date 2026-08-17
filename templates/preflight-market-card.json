@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "rank_scout_status": "data_required",
+  "evidence": {
+    "sources": [],
+    "captured_at": null,
+    "sample_size": 0,
+    "evidence_grade": "none"
+  },
+  "inference": [],
+  "assumption": [
+    "No current authorized ranking snapshot has been imported."
+  ],
+  "testable_hypothesis": [
+    {
+      "variable": "opening_pressure",
+      "variant_a": "external danger first",
+      "variant_b": "unusual protagonist choice first",
+      "success_signal": "more readers can state the next question after page one"
+    }
+  ],
+  "blockers": [
+    "current market claims are unavailable until evidence is imported"
+  ],
+  "opportunity_map": {
+    "hot_but_crowded": [],
+    "white_space": [],
+    "needs_experiment": [],
+    "avoid_following": []
+  }
+}

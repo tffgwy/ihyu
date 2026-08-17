@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "chapter_id": "chapter-001",
+  "candidate_id": "draft-001",
+  "acceptance_status": "candidate",
+  "source_hash": null,
+  "changes": {
+    "knowledge": [],
+    "relationships": [],
+    "resources": [],
+    "injuries": [],
+    "location_time": [],
+    "power_or_skill": [],
+    "public_status": [],
+    "open_loops": [],
+    "hooks_advanced": [],
+    "payoffs_delivered": []
+  },
+  "evidence": [],
+  "review": {
+    "open_p0": [],
+    "open_p1": [],
+    "open_p2": []
+  },
+  "owner_decision": {
+    "accepted_by": null,
+    "accepted_at": null,
+    "notes": null
+  }
+}

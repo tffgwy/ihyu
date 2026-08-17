@@ -37,6 +37,20 @@
     "ledger_file": ".novel/payoff-ledger.json",
     "pending_count": 0
   },
+  "reader_promises": {
+    "ledger_file": ".novel/reader-promise-ledger.json",
+    "active_promise_id": null
+  },
+  "market_evidence": {
+    "ledger_file": ".novel/market-evidence-log.json",
+    "status": "data_required"
+  },
+  "revision_queue": {
+    "file": ".novel/revision-queue.md",
+    "open_p0": 0,
+    "open_p1": 0,
+    "open_p2": 0
+  },
   "policy": {
     "local_models_allowed": false,
     "ai_output_is_candidate": true,

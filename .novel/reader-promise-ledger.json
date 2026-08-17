@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "status": "starter",
+  "items": [
+    {
+      "id": "promise-001",
+      "scope": "project",
+      "reader": "待填写：目标读者",
+      "type_signal": "待填写：题材与阅读预期",
+      "core_emotion": "待填写：期待、压抑、爽快、悬疑或关系张力",
+      "promise": "待填写：本书持续给读者什么体验",
+      "proof_in_opening": "待填写：开篇如何让读者立刻看见承诺",
+      "delivery_loop": "待填写：每 1-5 章如何兑现并升级",
+      "anti_promise": "待填写：本书明确不提供什么",
+      "status": "candidate"
+    }
+  ]
+}

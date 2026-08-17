@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "total_points": 100,
+  "dimensions": [
+    {"name": "opening_pressure", "points": 15},
+    {"name": "agency", "points": 15},
+    {"name": "obstacle", "points": 10},
+    {"name": "cost", "points": 10},
+    {"name": "payoff", "points": 15},
+    {"name": "new_state", "points": 15},
+    {"name": "hook", "points": 10},
+    {"name": "naturalness", "points": 10}
+  ],
+  "acceptance_bands": {
+    "strong": "85-100",
+    "usable": "70-84",
+    "rewrite": "50-69",
+    "reject": "0-49"
+  }
+}

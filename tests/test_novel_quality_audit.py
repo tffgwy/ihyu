@@ -1,6 +1,9 @@
 import unittest
+from pathlib import Path
 
 from tools.novel_quality_audit import audit_text
+from tools.run_quality_suite import run_suite
+from tools.score_chapter import score_text
 from tools.validate_emotion_plan import validate_plan
 from tools.validate_story_state import validate_state
 
@@ -83,6 +86,26 @@ class EmotionPlanValidationTests(unittest.TestCase):
             "next_hook": "钥匙留下印记",
         }
         self.assertEqual(validate_plan(plan), [])
+
+
+class ScoreChapterTests(unittest.TestCase):
+    def test_strong_case_scores_above_usable_threshold(self):
+        text = Path("evals/cases/strong-opening.md").read_text(encoding="utf-8")
+        payload = score_text(text)
+        self.assertGreaterEqual(payload["score"], 70)
+        self.assertIn(payload["band"], {"usable", "strong"})
+
+    def test_weak_case_scores_below_usable_threshold(self):
+        text = Path("evals/cases/weak-ai-opening.md").read_text(encoding="utf-8")
+        payload = score_text(text)
+        self.assertLess(payload["score"], 70)
+        self.assertIn(payload["band"], {"rewrite", "reject"})
+
+
+class QualitySuiteTests(unittest.TestCase):
+    def test_repository_quality_suite_passes(self):
+        results = run_suite(Path("."))
+        self.assertTrue(all(item.passed for item in results), results)
 
 
 if __name__ == "__main__":

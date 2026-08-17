@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "rank_scout_status": "data_required",
+  "snapshots": [],
+  "evidence_boundary": "No current authorized ranking snapshot has been imported.",
+  "allowed_claims": [
+    "exploratory hypothesis",
+    "unverified assumption",
+    "single-project experiment"
+  ],
+  "blocked_claims": [
+    "current hottest topic",
+    "guaranteed signing",
+    "guaranteed traffic",
+    "platform approval prediction"
+  ]
+}

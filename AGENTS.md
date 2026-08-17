@@ -9,7 +9,8 @@ This repository contains two related layers:
 ## Operating rules
 
 - Treat `PROJECT_CONTEXT.md`, `.novel/novel-state.json`, approved canon files,
-  and accepted review decisions as stronger than chat memory.
+  `.novel/reader-promise-ledger.json`, approved canon files, prompt run
+  records, and accepted review decisions as stronger than chat memory.
 - AI output is a candidate. It does not become canon until a human or project
   owner accepts it and records the decision.
 - Do not claim that this repository retrains a foundation model. It improves
@@ -68,3 +69,17 @@ The system should actively look for:
   model data.
 - Keep `rank_scout_status=data_required` until current authorized market data
   is actually imported and verified.
+
+## Local verification commands
+
+Run these before claiming the writing system is healthy:
+
+```bash
+python -m compileall -q tools tests
+python -m unittest discover -s tests -v
+python tools/run_quality_suite.py --json
+python tools/assemble_prompt_pack.py --output promptpacks/generated/novel-forge-core.md
+```
+
+`promptpacks/generated/` is reproducible output. Regenerate it after changing
+core prompts, templates, project rules, or quality gates.

@@ -35,6 +35,11 @@ jobs:
       - name: Audit candidate sample
         run: python tools/novel_quality_audit.py --path examples/chapter-sample.md --fail-on P1
 
+      - name: Score evaluation samples
+        run: |
+          python tools/score_chapter.py --path evals/cases/strong-opening.md --min-score 70
+          python tools/score_chapter.py --path evals/cases/weak-ai-opening.md --format json
+
       - name: Confirm local-model policy
         shell: bash
         run: |
@@ -46,3 +51,9 @@ jobs:
           assert state["rank_scout_status"] == "data_required"
           print("local-model policy and market evidence gate are explicit")
           PY
+
+      - name: Run repository quality suite
+        run: python tools/run_quality_suite.py --json
+
+      - name: Assemble prompt pack
+        run: python tools/assemble_prompt_pack.py --output promptpacks/generated/novel-forge-core.md

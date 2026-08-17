@@ -47,6 +47,9 @@
 python tools/validate_story_state.py
 python tools/validate_emotion_plan.py
 python tools/novel_quality_audit.py --path path/to/chapter.md --fail-on P1
+python tools/score_chapter.py --path path/to/chapter.md --min-score 70
+python tools/run_quality_suite.py --json
+python tools/assemble_prompt_pack.py --output promptpacks/generated/novel-forge-core.md
 python -m unittest discover -s tests -v
 ```
 
@@ -58,11 +61,15 @@ python -m unittest discover -s tests -v
 | `.novel/novel-state.json` | 机器可读的正史状态入口 |
 | `.novel/hook-ledger.json` | 伏笔、悬念、回收路径账本 |
 | `.novel/payoff-ledger.json` | 读者承诺、局部回报和后续新问题账本 |
+| `.novel/reader-promise-ledger.json` | 目标读者、核心情绪和持续兑现方式 |
 | `.novel/character-voiceprint.md` | 角色声音和行为差异 |
 | `templates/` | 故事圣经、章节契约、情绪计划、审稿报告等模板 |
 | `prompts/` | 架构、规划、候选写作、审稿、自然度和接受提示词 |
+| `promptpacks/` | 可复制的整合提示词包 |
+| `evals/` | 强/弱样例和评分矩阵 |
 | `tools/` | 不依赖外部服务的状态校验和文本风险审计 |
 | `docs/QUALITY_GATES.md` | 分层质量门和五人智囊审查框架 |
+| `docs/TRAINING_AND_EVALUATION.md` | “训练 AI 变强”的安全边界与评测方法 |
 | `docs/market-gate.md` | 榜单证据状态、假设和最小验证实验 |
 | `.github/workflows/quality.yml` | 推送和 PR 时运行的确定性检查 |
 
